@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ xmlns:Lab3="clr-namespace:Lab3"
+ x:DataType="Lab3:BusinessLogic"
+ x:Class="Lab3.UserInterface">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Start">
+            <Label HorizontalTextAlignment="Start" Text="Airports" FontSize="Large"/>
+            <CollectionView x:Name="CV" ItemsSource="{Binding Airports}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="Lab3:Airport">
+                        <Grid RowDefinitions="*" ColumnDefinitions="1.35*,3*,2.5*,0.5*,*">
+                            <Label Grid.Column="0" Text="{Binding Id}" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{Binding City}" VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="{Binding DateVisited}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="3" Text="{Binding Rating}" VerticalTextAlignment="Center" />
+                            <Button Grid.Column="4" BackgroundColor="Transparent" ImageSource="trash.png" Clicked="DeleteMovie_Clicked"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid RowDefinitions="*" ColumnDefinitions="0.8*,2.5*,1.6*,*">
+                <Entry Grid.Column="0" Placeholder="Id" x:Name="IdENT"/>
+                <Entry Grid.Column="1" Placeholder="City" x:Name="CityENT"/>
+                <Entry Grid.Column="2" Placeholder="Date Visited" x:Name="DateENT"/>
+                <Entry Grid.Column="3" Placeholder="Rating" x:Name="RatingENT"/>
+            </Grid>
+            <Button TextColor="White" Text="Add Airport" Clicked="AddAirport_Clicked"/>
+            <Button TextColor="White" Text="Edit Airport" Clicked="EditMovie_Clicked"/>
+            <Button TextColor="White" Text="Calculate Statistics" Clicked="PrintStatistics_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
